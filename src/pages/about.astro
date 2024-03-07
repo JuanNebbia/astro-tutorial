@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+              color: purple;
+              font-size: 4rem;
+            }
+            .skill {
+              color: var(--skillColor);
+              font-weight: var(--fontWeight);
+              text-transform: var(--textCase);
+            }
+        </style>
+	</head>
+	<body>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+		<h1>{pageTitle}</h1>
+        <h2>I'm just learning Astro...</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime fugiat dolorem, quae rerum ab quia perspiciatis! Commodi, sint necessitatibus minus nostrum veritatis beatae deleniti distinctio nemo quidem repellat odit ad nam cumque! Praesentium harum odio amet dicta quibusdam sapiente, mollitia fugiat magni laborum error voluptas vel asperiores modi eveniet. Voluptatem, voluptatibus repellat! Optio earum nisi beatae sunt dicta a dolorem modi distinctio! Nulla animi rerum fuga esse ipsam! Quibusdam magni architecto officiis commodi illo, placeat nisi exercitationem eveniet alias rem accusamus obcaecati est eius. Quod perferendis eligendi provident commodi obcaecati, accusamus asperiores ut veritatis reprehenderit unde, laudantium ratione aspernatur!</p>
+        <p>Here are a few facts about me:</p>
+        <ul>
+            <li>My name is {identity.firstName}.</li>
+            <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+            {identity.hobbies.length >= 2 &&
+                <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+            }
+        </ul>
+        <p>My skills are:</p>
+        <ul>
+          {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+
+        {happy && <p>I am happy to be learning Astro!</p>}
+
+        {finished && <p>I finished this tutorial!</p>}
+
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+	</body>
+</html>
