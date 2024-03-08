@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'My First Blog Post'
 subtitle: "What I've accomplished"
 pubDate: 2022-07-01
